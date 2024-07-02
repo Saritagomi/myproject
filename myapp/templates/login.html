@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ccd7d8, #87CEEB);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            width: 800px;
+        }
+        .login-form {
+            flex: 1;
+            padding: 20px;
+        }
+        .divider {
+            position: relative;
+            width: 20px;
+            height: 300px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #000;
+        }
+        .divider::before {
+            height: 50%;
+            top: 0;
+        }
+        .divider::after {
+            height: 50%;
+            bottom: 0;
+        }
+        .divider span {
+            width: 4px;
+            height: 100px;
+            background-color: #000;
+        }
+        .logo-container {
+            text-align: center;
+            flex: 1;
+        }
+        .logo-container img {
+            max-width: 64%;
+            height: auto;
+        }
+        .input-group-text {
+            border: none;
+            align-items: center;
+        }
+        .form-control {
+            border: none;
+            border-radius: 0;
+            width: 100%;
+        }
+        .form-group {
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        .input-group {
+            width: 100%;
+        }
+        button.btn-block {
+            width: 100%;
+        }
+        .d-grid {
+            display: grid;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="{% static 'images/estee-lauder-logo.png' %}" alt="Estée Lauder" class="img-fluid">
+        </div>
+        <div class="divider">
+            <span></span>
+        </div>
+        <div class="login-form">
+            <h2 class="text-center mb-4">Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                        </div>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                        </div>
+                        {{ form.password }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-link" onclick="window.location.href='{% url 'forgot_password' %}'">Forgot Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
